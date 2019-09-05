@@ -2845,6 +2845,8 @@ var _getItemAt,
 		var onComplete = function() {
 			item.loading = false;
 			item.loaded = true;
+            item.w = img.width;
+            item.h = img.height;
 
 			if(item.loadComplete) {
 				item.loadComplete(item);
