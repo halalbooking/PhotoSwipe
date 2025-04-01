@@ -158,7 +158,6 @@ var _getItemAt,
 			if(img.naturalWidth) {
 				item.w = img.naturalWidth;
 				item.h = img.naturalHeight;
-				console.log(item.src, item.w, item.h);
 			}
 
 			if(item.loadComplete) {
