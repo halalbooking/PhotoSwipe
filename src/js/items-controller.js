@@ -154,9 +154,12 @@ var _getItemAt,
 		var onComplete = function() {
 			item.loading = false;
 			item.loaded = true;
-			item.w = img.width;
-			item.h = img.height;
-
+			// use real size instead of fake one
+			if(img.naturalWidth) {
+				item.w = img.naturalWidth;
+				item.h = img.naturalHeight;
+				console.log(item.src, item.w, item.h);
+			}
 
 			if(item.loadComplete) {
 				item.loadComplete(item);
@@ -173,6 +176,11 @@ var _getItemAt,
 		};		
 
 		img.src = item.src;// + '?a=' + Math.random();
+
+		// if image is already cached
+		if (img.complete && img.naturalWidth) {
+			onComplete();
+		}
 
 		return img;
 	},
